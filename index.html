@@ -45,34 +45,6 @@
     <script>
       window.__HB_DEV_IMAGE_FLY_ONLY = false;
     </script>
-    <script>
-      (function () {
-        try {
-          var url = new URL(window.location.href);
-          var params = url.searchParams;
-          var id = (params.get("id") || "").trim();
-          var isPreviewMode = params.get("mode") === "preview";
-          var isDemoMode = params.get("mode") === "demo";
-          var isIndexHtmlPath = /\/index\.html$/i.test(url.pathname);
-
-          if (id && isIndexHtmlPath) {
-            var prettyPath = url.pathname.replace(/\/index\.html$/i, "/");
-            window.history.replaceState(
-              null,
-              "",
-              prettyPath + url.search + url.hash,
-            );
-          }
-
-          if (!id && !isPreviewMode && !isDemoMode) {
-            var createUrl = new URL("./create.html", window.location.href);
-            window.location.replace(createUrl.href);
-          }
-        } catch (_) {
-          /* ignore */
-        }
-      })();
-    </script>
     <!-- Chặn DevTools (F12, Ctrl+Shift+I, Inspect, …). Bypass: tham số URL ?key=&lt;giá trị md5 khớp&gt; theo cấu hình thư viện -->
     <script src="./js/detect-devtools.js"></script>
     <script>
