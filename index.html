@@ -902,6 +902,11 @@
     ></script>
     <script src="js/hbDefaultDemoData.js"></script>
     <script>
+  if (typeof window.__HB_getDefaultDemoData === "function") {
+    window.__HB_PREVIEW_DATA = window.__HB_getDefaultDemoData();
+  }
+</script>
+    <script>
       (function () {
         try {
           const params = new URLSearchParams(window.location.search);
