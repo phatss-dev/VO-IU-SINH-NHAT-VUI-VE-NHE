@@ -612,3 +612,19 @@ footer svg {
     transition: none;
   }
 }
+
+#letter-birthday,
+.letter-birthday {
+  background-image: url('../assets/imageBackgroud/bg_laptop.png') !important;
+  background-size: cover !important;
+  background-position: center bottom !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+}
+
+@media (max-width: 768px) {
+  #letter-birthday,
+  .letter-birthday {
+    background-image: url('../assets/imageBackgroud/bg_phone.png') !important;
+  }
+}
