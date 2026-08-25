@@ -41,7 +41,7 @@ body,
 
 .scene
 {
-  background-image: url('../assets/images/bg_laptop.png');
+  background-image: url('../assets/imageBackgroud/bg_laptop.png');
   background-size: cover;
   background-position: center bottom;
   background-repeat: no-repeat;
