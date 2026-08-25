@@ -1,0 +1,260 @@
+#video-birthday {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.65s ease, visibility 0.65s ease;
+}
+
+#video-birthday.is-active {
+    z-index: 100;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+#video-birthday .video-birthday__main {
+    height: 100%;
+    height: 100dvh;
+    padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px));
+}
+
+/* Nút tiếp tục — kiểu pill giống textBirthday2 */
+#video-birthday .video-actions {
+    position: absolute;
+    left: 50%;
+    bottom: calc(1.1rem + env(safe-area-inset-bottom, 0px));
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    padding: clamp(0.35rem, 1.2vw, 0.55rem) clamp(0.7rem, 2.4vw, 1.1rem);
+    border: 2px solid #f9a8d4;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.65) inset,
+        0 0 16px rgba(244, 114, 182, 0.45),
+        0 0 32px rgba(251, 113, 133, 0.28),
+        0 8px 22px rgba(244, 114, 182, 0.18);
+    transform: translateX(-50%);
+    opacity: 0;
+    pointer-events: none;
+    cursor: pointer;
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    animation: video-actions-glow 2.4s ease-in-out infinite;
+    transition: opacity 0.35s ease, transform 0.25s ease;
+}
+
+#video-birthday .video-actions.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#video-birthday .video-actions:hover {
+    transform: translateX(-50%) scale(1.04);
+}
+
+#video-birthday .video-actions:active {
+    transform: translateX(-50%) scale(0.97);
+}
+
+@keyframes video-actions-glow {
+    0%, 100% {
+        border-color: #f9a8d4;
+        box-shadow:
+            0 0 0 1px rgba(255, 255, 255, 0.65) inset,
+            0 0 14px rgba(244, 114, 182, 0.4),
+            0 0 28px rgba(251, 113, 133, 0.22),
+            0 8px 22px rgba(244, 114, 182, 0.16);
+    }
+    50% {
+        border-color: #fb7185;
+        box-shadow:
+            0 0 0 1px rgba(255, 255, 255, 0.8) inset,
+            0 0 22px rgba(244, 114, 182, 0.7),
+            0 0 42px rgba(251, 113, 133, 0.42),
+            0 10px 26px rgba(244, 114, 182, 0.24);
+    }
+}
+
+#video-birthday .video-action-icon-wrap {
+    display: block;
+    opacity: 0;
+    transform: translateY(18px) scale(0.86);
+}
+
+#video-birthday .video-action-icon {
+    display: block;
+    width: clamp(1.75rem, 5.8vw, 2.5rem);
+    height: auto;
+    filter: drop-shadow(0 4px 8px rgba(244, 114, 182, 0.2));
+    pointer-events: none;
+    user-select: none;
+}
+
+@media (hover: none) {
+    #video-birthday .video-actions:hover {
+        transform: translateX(-50%);
+    }
+}
+
+.pink-glow {
+    box-shadow: 0 0 40px -10px rgba(255, 143, 177, 0.55);
+}
+
+@keyframes border-rotate {
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes spin-soft {
+    to { transform: rotate(360deg); }
+}
+
+.gradient-border-wrapper {
+    position: relative;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 5px;
+    border-radius: 20px;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gradient-border-wrapper::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+        from 180deg,
+        #FFD6E7 0%,
+        #FF8FB1 25%,
+        #FFFFFF 50%,
+        #FF8FB1 75%,
+        #FFD6E7 100%
+    );
+    animation: border-rotate 8s linear infinite;
+    z-index: 0;
+}
+
+.gradient-border-inner {
+    position: relative;
+    z-index: 5;
+    background: #FFF0F5;
+    border-radius: 16px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.video-shell {
+    width: min(94vw, calc((100dvh - 4.25rem) * 16 / 9), 920px);
+    aspect-ratio: 16 / 9;
+    max-height: calc(100dvh - 4.25rem);
+    transition: width 0.25s ease, aspect-ratio 0.25s ease;
+}
+
+.video-shell.is-portrait {
+    width: min(72vw, calc((100dvh - 4.25rem) * 9 / 16), 420px);
+    aspect-ratio: 9 / 16;
+}
+
+@media (max-height: 500px) {
+    .video-shell {
+        width: min(94vw, calc((100dvh - 2.75rem) * 16 / 9), 920px);
+        max-height: calc(100dvh - 2.75rem);
+    }
+
+    .video-shell.is-portrait {
+        width: min(40vw, calc((100dvh - 2.75rem) * 9 / 16), 280px);
+    }
+}
+
+.loader-ring {
+    width: 36px;
+    height: 36px;
+    border: 3px solid rgba(255, 214, 231, 0.25);
+    border-top-color: #FF8FB1;
+    border-radius: 50%;
+    animation: spin-soft 0.8s linear infinite;
+}
+
+#video-birthday input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    background: #FF8FB1;
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(255, 143, 177, 0.8);
+}
+
+#fsRoot:fullscreen,
+#fsRoot:-webkit-full-screen {
+    width: 100%;
+    height: 100%;
+    border-radius: 0 !important;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#fsRoot:fullscreen .fs-stage,
+#fsRoot:-webkit-full-screen .fs-stage {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #000;
+}
+
+#fsRoot:fullscreen video,
+#fsRoot:-webkit-full-screen video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 0;
+}
+
+#fsRoot:fullscreen.fs-rotate-landscape .fs-stage,
+#fsRoot:-webkit-full-screen.fs-rotate-landscape .fs-stage {
+    position: absolute;
+    width: 100dvh;
+    height: 100dvw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(90deg);
+    transform-origin: center center;
+}
+
+#fsRoot:fullscreen.fs-rotate-landscape,
+#fsRoot:-webkit-full-screen.fs-rotate-landscape {
+    overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #video-birthday {
+        transition: none;
+    }
+
+    #video-birthday .video-actions {
+        transition: none;
+        animation: none;
+    }
+
+    .gradient-border-wrapper::before,
+    .loader-ring {
+        animation: none;
+    }
+}

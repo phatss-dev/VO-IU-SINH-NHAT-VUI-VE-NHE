@@ -1,0 +1,614 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap");
+
+:root {
+  --envelope-x: clamp(230px, 80vw, 310px);
+  --envelope-y: calc(var(--envelope-x) * 0.68);
+  --envelope-bg: #fff5f8;
+  --envelope-shadow: #f4b8c8;
+  --ornament-size: 3.6rem;
+  --heart-size: clamp(54px, 20vw, 80px);
+  --flap-bottom: clamp(20px, 9vw, 34px);
+  --letter-x: 210px;
+  --letter-y: calc(210px - 1rem - 10px);
+  --letter-bg: #fffafc;
+  --letter-shadow: #f0c4d4;
+  --letter-text: #5c2d42;
+  --letter-font: "Dancing Script", serif;
+  --letter-button-text: #d4567a;
+  --heart-bg: #e84a7f;
+  --heart-text: white;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --envelope-x: clamp(380px, 58vw, 520px);
+    --envelope-y: calc(var(--envelope-x) * 0.67);
+    --ornament-size: 4.2rem;
+    --heart-size: clamp(80px, 11vw, 108px);
+    --flap-bottom: clamp(36px, 6vw, 60px);
+  }
+}
+
+@media (min-width: 1200px) {
+  :root {
+    --envelope-x: clamp(400px, 36vw, 520px);
+    --envelope-y: calc(var(--envelope-x) * 0.66);
+    --ornament-size: 4.4rem;
+    --heart-size: clamp(82px, 8vw, 112px);
+    --flap-bottom: clamp(44px, 4.5vw, 68px);
+  }
+}
+html {
+  font-size: clamp(16px, 0.35vw + 14px, 20px);
+}
+
+#letter-birthday {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  margin: 0;
+  overflow: hidden;
+  height: 100dvh;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.65s ease, visibility 0.65s ease;
+}
+
+#letter-birthday.is-active {
+  z-index: 80;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.cssletter {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  -webkit-user-select: none;
+  margin: 0;
+  overflow: hidden;
+  padding: clamp(16px, 4vw, 36px);
+}
+
+.envelope {
+  position: relative;
+  width: var(--envelope-x);
+  height: var(--envelope-y);
+  background: var(--envelope-bg);
+  box-shadow:
+    inset 0 0 30px -5px var(--envelope-shadow),
+    0 0 50vw 0 #f5c6d6;
+  transition:
+    background-color 0.55s ease,
+    box-shadow 0.55s ease;
+}
+
+.envelope-flap {
+  width: 100%;
+  height: 71%;
+  position: absolute;
+  top: 0;
+  z-index: 3;
+  overflow: hidden;
+  transition:
+    transform 0.75s cubic-bezier(0.22, 0.8, 0.24, 1),
+    opacity 0.45s ease;
+  transform-origin: top;
+  pointer-events: all;
+}
+
+.envelope-folds {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition:
+    opacity 0.45s ease,
+    visibility 0s linear 0.45s;
+}
+
+.envelope-flap::before,
+.envelope-left::before,
+.envelope-right::before,
+.envelope-bottom::before {
+  content: "";
+  transform: rotate(45deg);
+  background: var(--envelope-bg);
+  box-shadow: 0 0 30px -5px var(--envelope-shadow);
+  width: 100%;
+  aspect-ratio: 1;
+  display: block;
+  position: absolute;
+  top: 60%;
+}
+
+.envelope-flap::before {
+  border-radius: 5rem;
+  bottom: var(--flap-bottom);
+  border-radius: 5rem;
+  top: auto;
+}
+
+.envelope-left::before {
+  top: 10%;
+  left: -65%;
+}
+
+.envelope-right::before {
+  top: 10%;
+  right: -65%;
+}
+
+.envelope-bottom::before {
+  top: 60%;
+  border-radius: 5rem;
+}
+
+.heart {
+  z-index: 4;
+  position: relative;
+  box-shadow: none;
+  border: none;
+  width: var(--heart-size);
+  aspect-ratio: 1;
+  background:
+    radial-gradient(circle at 60% 65%, var(--heart-bg) 64%, #0000 65%) top
+      left/50% 50%,
+    radial-gradient(circle at 40% 65%, var(--heart-bg) 64%, #0000 65%) top
+      right/50% 50%,
+    conic-gradient(from -45deg at 50% 85.5%, var(--heart-bg) 90deg, #0000 0)
+      bottom/100% 50%;
+  background-repeat: no-repeat;
+  left: 50%;
+  top: 70%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition:
+    opacity 0.35s ease,
+    visibility 0s linear 0.35s;
+}
+
+.heart::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: var(--heart-size);
+  aspect-ratio: 1;
+  background:
+    radial-gradient(circle at 60% 65%, #ffffff26 64%, #0000 65%) top left/50%
+      50%,
+    radial-gradient(circle at 40% 65%, #ffffff26 64%, #0000 65%) top right/50%
+      50%,
+    conic-gradient(from -45deg at 50% 85.5%, #ffffff26 90deg, #0000 0)
+      bottom/100% 50%;
+  background-repeat: no-repeat;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 0.3s ease all;
+  z-index: -1;
+}
+
+.heart:hover,
+.heart:active,
+.heart:focus {
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+  color: var(--heart-text);
+}
+
+.heart:hover::before,
+.heart:active::before,
+.heart:focus::before {
+  transform: translate(-50%, -50%) scale(0.8);
+}
+
+.heart-text {
+  transform: translateY(-10px);
+  display: block;
+  color: var(--heart-text);
+  font-size: clamp(1rem, 0.9rem + 1vw, 1.5rem);
+  font-family: var(--letter-font);
+}
+
+.envelope.active * {
+  pointer-events: none;
+}
+
+.envelope.active .envelope-flap {
+  transform: rotateX(-180deg) translateY(0);
+  perspective: 10px;
+}
+
+.envelope.active .envelope-flap::before {
+  box-shadow: inset 0 0 30px -5px var(--envelope-shadow);
+}
+
+.envelope.active .heart {
+  display: none;
+}
+
+.reveal-letter {
+  box-sizing: border-box;
+  font-family: var(--letter-font);
+  color: #5c2d42;
+  background-color: var(--letter-bg);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    #0000 0,
+    #0000 28px,
+    #e8a0b01a 29px,
+    #0000 30px
+  );
+  background-attachment: local;
+  box-shadow:
+    inset 0 0 36px #f0a8c022,
+    0 16px 30px -18px #d4567a44;
+  border: 0;
+  border-radius: 0;
+  width: min(94vw, calc(var(--envelope-x) * 0.94));
+  min-height: clamp(160px, 40vw, 220px);
+  max-height: min(68vh, 460px);
+  padding: clamp(1.05rem, 2.4vw, 1.5rem) clamp(1rem, 3vw, 1.4rem);
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 82%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  opacity: 0;
+  transform: translate(-50%, -100%) scale(0.96);
+  transition:
+    opacity 0.35s ease,
+    top 0.75s cubic-bezier(0.22, 0.8, 0.24, 1),
+    transform 0.85s cubic-bezier(0.22, 0.8, 0.24, 1);
+  pointer-events: none;
+  z-index: 1;
+  will-change: transform, top, opacity;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.reveal-letter::-webkit-scrollbar {
+  display: none;
+}
+
+.reveal-letter::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 50% at 50% 0%, #e84a7f18 0%, #0000 70%),
+    radial-gradient(55% 120% at 0% 40%, #f4a8b814 0%, #0000 70%),
+    radial-gradient(55% 120% at 100% 40%, #f4a8b814 0%, #0000 70%);
+  mix-blend-mode: multiply;
+  opacity: 0.7;
+}
+
+.reveal-letter .letter-title {
+  margin: 0 0 clamp(0.45rem, 1.4vw, 0.75rem);
+  padding: 0 0.15rem;
+  font-size: clamp(1.4rem, 1.1rem + 1.4vw, 1.9rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: #d4567a;
+  text-wrap: balance;
+  min-height: 1.25em;
+}
+
+.reveal-letter .letter-title[hidden] {
+  display: none;
+}
+
+.reveal-letter .letter-body {
+  margin: 0;
+  padding: 0.25rem 0.15rem 0.65rem;
+  font-size: clamp(1.08rem, 0.92rem + 0.85vw, 1.28rem);
+  line-height: 1.55;
+  letter-spacing: 0.01em;
+  text-wrap: pretty;
+  white-space: pre-wrap;
+  text-align: justify;
+}
+
+.reveal-letter .letter-body:not(:empty)::first-letter {
+  font-size: 1.8em;
+  color: #d4567a;
+  font-weight: 700;
+}
+
+.reveal-letter .letter-signature {
+  display: block;
+  margin-top: clamp(0.4rem, 1.2vw, 0.75rem);
+  margin-left: auto;
+  width: fit-content;
+  max-width: 100%;
+  font-size: clamp(1.18rem, 1rem + 0.9vw, 1.55rem);
+  font-style: normal;
+  color: #b84d6e;
+  text-shadow: 0 1px 0 #fff5f8;
+  text-align: right;
+  min-height: 1.2em;
+}
+
+.reveal-letter .letter-signature[hidden] {
+  display: none;
+}
+
+.reveal-letter .letter-continue {
+  display: block;
+  margin: clamp(0.85rem, 2vw, 1.25rem) auto 0;
+  padding: 0.55rem 1.45rem;
+  border: 1.5px solid #e84a7f;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ff7aa8 0%, #e84a7f 100%);
+  color: #fff;
+  font-family: var(--letter-font);
+  font-size: clamp(1rem, 0.9rem + 0.45vw, 1.2rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.55s ease,
+    visibility 0s linear 0.55s,
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
+  box-shadow: 0 8px 18px -10px #e84a7f99;
+  pointer-events: none;
+}
+
+.reveal-letter .letter-continue.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity 0.55s ease,
+    visibility 0s linear 0s,
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
+  pointer-events: auto;
+}
+
+.reveal-letter .letter-continue:hover,
+.reveal-letter .letter-continue:focus-visible {
+  filter: brightness(1.05);
+  box-shadow: 0 10px 22px -10px #e84a7fcc;
+  outline: none;
+}
+
+.reveal-letter .letter-continue:active {
+  filter: brightness(0.97);
+}
+
+.reveal-letter .is-typing::after {
+  content: "";
+  display: inline-block;
+  width: 0.08em;
+  height: 1em;
+  margin-left: 0.12em;
+  vertical-align: -0.12em;
+  background: #d4567a;
+  animation: caret-blink 0.7s steps(1) infinite;
+}
+
+@keyframes caret-blink {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-letter .is-typing::after {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+.envelope.active .reveal-letter {
+  opacity: 1;
+  z-index: 1;
+}
+
+.envelope.extracting .reveal-letter {
+  transform: translate(-50%, -190%) scale(1);
+}
+
+.envelope.lowered {
+  background: transparent;
+  box-shadow: none;
+}
+
+.envelope.lowered .envelope-folds,
+.envelope.lowered .heart {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.envelope.lowered .envelope-flap {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.envelope.lowered .reveal-letter {
+  top: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  z-index: 6;
+  pointer-events: auto;
+}
+
+.envelope.active .envelope-flap {
+  z-index: 0;
+}
+
+@media (min-width: 768px) {
+  .reveal-letter {
+    width: min(92vw, calc(var(--envelope-x) * 0.94));
+    min-height: clamp(280px, 36vw, 420px);
+    max-height: min(78vh, 720px);
+    padding: clamp(1.25rem, 2.4vw, 1.75rem) clamp(1.2rem, 3vw, 1.8rem);
+  }
+
+  .reveal-letter .letter-title {
+    font-size: clamp(1.75rem, 1.35rem + 1.1vw, 2.25rem);
+  }
+
+  .reveal-letter .letter-body {
+    font-size: clamp(1.28rem, 1.1rem + 0.7vw, 1.55rem);
+    line-height: 1.6;
+  }
+
+  .reveal-letter .letter-signature {
+    font-size: clamp(1.35rem, 1.15rem + 0.7vw, 1.7rem);
+  }
+
+  .reveal-letter .letter-continue {
+    margin-top: clamp(1rem, 2.2vw, 1.4rem);
+    padding: 0.65rem 1.7rem;
+    font-size: clamp(1.1rem, 0.95rem + 0.5vw, 1.35rem);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .reveal-letter {
+    min-height: clamp(300px, 40vh, 460px);
+    max-height: min(80vh, 740px);
+  }
+}
+
+.letter {
+  box-sizing: border-box;
+  font-family: var(--letter-font);
+  font-size: 0.9rem;
+  line-height: 1.1;
+  background-color: var(--letter-bg);
+  color: var(--letter-text);
+  width: var(--letter-x);
+  height: var(--letter-y);
+  user-select: none;
+  box-shadow: inset 0 0 20px -5px var(--letter-shadow);
+  padding: 2.4rem 0.9rem 0.9rem;
+  margin: 0;
+  cursor: grab;
+  position: absolute;
+  top: 1rem;
+  overflow: auto;
+  text-align: center;
+  border: 0;
+}
+
+.letter:active {
+  cursor: grabbing;
+}
+
+.letter.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.letter cite {
+  font-size: 1.25rem;
+  color: var(--letter-text);
+  margin-top: 1rem;
+}
+
+.letter cite::before {
+  content: none;
+}
+
+.letter:nth-child(even) {
+  transform: skew(-2deg) translateY(-4px);
+}
+
+.letter:nth-child(odd) {
+  transform: skew(2deg) translateY(4px);
+}
+
+@media (min-width: 650px) {
+  .letter {
+    font-size: 1.1rem;
+  }
+}
+
+.closeLetter {
+  font-size: 0 !important;
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  border: 0;
+}
+
+.closeLetter::before {
+  content: "˚ʚ❤︎ɞ˚";
+  font-size: 1.5rem !important;
+  font-family: var(--letter-font);
+  color: var(--letter-button-text);
+  text-align: center;
+}
+
+.closeLetter:hover,
+.closeLetter:active,
+.closeLetter:focus {
+  background-color: transparent;
+  color: var(--letter-text);
+  transform: translateX(-50%);
+  padding: 0;
+  margin: 0;
+}
+
+.closeLetter:hover::before,
+.closeLetter:active::before,
+.closeLetter:focus::before {
+  content: "xXx";
+}
+
+/* Attribution */
+@import url("https://frills.dev/css/abstracts/_variables.css");
+@import url("https://frills.dev/css/components/_logo.css");
+
+:root {
+  --bodybg: #fce4ec;
+}
+
+footer {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 10000000;
+}
+
+footer svg {
+  width: 100px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #letter-birthday,
+  #image-birthday {
+    transition: none;
+  }
+}

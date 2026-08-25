@@ -1,0 +1,659 @@
+@import url('https://fonts.googleapis.com/css2?family=Chango&display=swap');
+
+*
+{
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+body
+{
+	min-height: 100vh;
+	min-height: 100dvh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow-x: hidden;
+	/* Chặn double-tap zoom; lucky-rain tự set touch-action: none cho pinch hiệu ứng */
+	touch-action: manipulation;
+}
+
+html
+{
+	touch-action: manipulation;
+	-ms-touch-action: manipulation;
+}
+
+body,
+#intro-container,
+#letter-birthday,
+#image-birthday,
+#video-birthday
+{
+	background-color: #fff5f9;
+	background-image: url('../assets/imageBackgroud/bg_phone.png');
+	background-position: center center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+}
+
+.scene
+{
+	min-height: 100vh;
+	min-height: 100dvh;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding:
+		max(1rem, env(safe-area-inset-top))
+		max(0.75rem, env(safe-area-inset-right))
+		calc(8rem + env(safe-area-inset-bottom))
+		max(0.75rem, env(safe-area-inset-left));
+	transition: opacity 0.7s ease, visibility 0.7s ease;
+}
+
+.scene.is-leaving
+{
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+}
+
+.scene[hidden]
+{
+	display: none !important;
+}
+
+.cake
+{	
+	font-size: min(1.2vmin, calc((100dvh - 7.5rem) / 44), calc(92vw / 44));
+	width: 44em;
+	height: 44em;
+	flex-shrink: 0;
+	position: relative;
+	
+	background:
+		
+		/* layers */
+		linear-gradient( 0deg, 
+			#ffc9dc 33%,
+			#e879a9 33%,
+			#e879a9 66%,
+			#ffc9dc 66%
+		) left 0 bottom 0 / 100% 50%;
+	
+	background-repeat: no-repeat;
+/* 	border: 1em solid #660805; */
+	border-radius: 4em;
+	filter: drop-shadow( 0 0 1.2em rgba( 232, 93, 136, .28 ) );
+/* 	box-shadow: 0 0 0 1em #660805 inset; */
+}
+
+.cake::before,
+.cake::after
+{
+	content: '';
+	display: block;
+}
+
+.cake::before
+{
+	width: 105%;
+	height: 46%;
+	left: -2.5%;
+	top: 30%;
+	position: absolute;
+	z-index: 3;
+	border-radius: 5em;
+	background: 
+		
+		/* center-left circle */
+		radial-gradient( circle 2.1em at 50% 0, #fff5f9 99%, transparent 100% ) left 14em bottom 7em / 4.15em 3em,
+		linear-gradient( #ffc9dc, #ffc9dc ) left 14em bottom 5em / 4.5em 5em,
+		radial-gradient( circle 2em at 50% 100%, #ffc9dc 99%, transparent 100% ) left 10em bottom 12em / 4em 3em,
+		linear-gradient( #ffc9dc, #ffc9dc ) left 10em bottom 5em / 4em 7em,
+		
+		/* center-right circle */
+		radial-gradient( circle 3em at 50% 0, #fff5f9 99%, transparent 100% ) right 16em bottom 2.1em / 6em 3em,
+		radial-gradient( circle 3em at 50% 100%, #ffc9dc 99%, transparent 100% ) right 22em bottom 12em / 6em 3em,
+		linear-gradient( #ffc9dc, #ffc9dc ) right 22em bottom 5em / 6em 7em,
+		
+		/* bottom right circle */
+		linear-gradient( #ffc9dc, #ffc9dc ) right 8em bottom 5em / 8em 5em,
+		radial-gradient( circle 4em at 50% 100%, #ffc9dc 99%, transparent 100% ) right 8em bottom 10em / 8em 4em,
+		radial-gradient( circle 4.05em at right 4em bottom 5em, #fff5f9 99%, transparent 100% ),
+		
+		/* bottom left circle */
+		radial-gradient( circle 5em at left 5em bottom 5em, #fff5f9 99%, transparent 100% ),
+		
+		/* backgruond */
+		linear-gradient( #fff5f9, #fff5f9 ) 0 0 / 100% 75%;
+	
+	background-repeat: no-repeat;
+}
+
+.cake::after
+{
+	content: attr(data-age);
+	position: absolute;
+	top: 11%;
+	left: 10%;
+	z-index: 4;
+	font-size: 9em;
+	font-family: Chango;
+	color: #e85d88;
+	text-shadow: 
+		.1em 0em 0 #ffe4ef,
+		0 0em .3em rgba( 184, 92, 128, .35 );
+}
+
+.flame
+{
+	position: absolute;
+	width: 1.8em;
+	height: 4em;
+	background: radial-gradient( ellipse 50% 50%,
+		#fccfa2 33%,
+		#ffb564 66%,
+		#ffa233 95%,
+		transparent 105%
+	);
+	background-repeat: no-repeat;
+	transform-origin: bottom center;
+	pointer-events: none;
+	z-index: 5;
+	animation: flame-sway 1.15s ease-in-out infinite;
+}
+
+.flame::before
+{
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: radial-gradient( ellipse 40% 60% at 50% 80%,
+		rgba(255, 220, 150, 0.85) 0%,
+		rgba(255, 160, 50, 0.35) 45%,
+		transparent 70%
+	);
+	animation: flame-flicker 0.85s ease-in-out infinite;
+}
+
+.flame--left
+{
+	left: 7.5em;
+	top: 3em;
+	animation-duration: 1.2s;
+}
+
+.flame--right
+{
+	left: 15.5em;
+	top: 3em;
+	animation-duration: 1.35s;
+	animation-delay: 0.35s;
+}
+
+.flame--right::before
+{
+	animation-delay: 0.2s;
+}
+
+.cake.is-extinguishing .flame,
+.cake.is-extinguished .flame
+{
+	animation: none;
+}
+
+.cake.is-extinguishing .flame
+{
+	opacity: var(--flame-life, 1);
+	transform:
+		scaleX(calc(0.65 + 0.35 * var(--flame-life, 1)))
+		scaleY(calc(0.12 + 0.88 * var(--flame-life, 1)));
+	filter:
+		brightness(calc(0.35 + 0.65 * var(--flame-life, 1)))
+		saturate(calc(0.45 + 0.55 * var(--flame-life, 1)));
+}
+
+.cake.is-extinguishing .flame::before
+{
+	animation: none;
+	opacity: var(--flame-life, 1);
+}
+
+.cake.is-extinguished .flame
+{
+	opacity: 0;
+	visibility: hidden;
+	transform: scaleY(0);
+	filter: brightness(0);
+}
+
+.cake.is-extinguished .flame::before
+{
+	opacity: 0;
+}
+
+.cake-photo-slot
+{
+	position: absolute;
+	top: calc(11% + 9em + 0.4em);
+	right: 8.5em;
+	transform: translateY(-100%);
+	z-index: 1;
+	pointer-events: none;
+}
+
+.cake-photo-slot::before
+{
+	content: '';
+	position: absolute;
+	bottom: 0.1em;
+	left: 50%;
+	width: 88%;
+	height: 1.4em;
+	transform: translateX(-50%) rotate(7deg);
+	background: radial-gradient(
+		ellipse 55% 100% at 50% 40%,
+		rgba(180, 100, 130, 0.3) 0%,
+		rgba(200, 130, 155, 0.15) 50%,
+		transparent 75%
+	);
+	filter: blur(0.1em);
+	z-index: 0;
+}
+
+.cake-photo-frame
+{
+	position: relative;
+	padding: 0.45em 0.45em 2em;
+	background: linear-gradient(180deg, #ffffff 0%, #f7f4f0 100%);
+	box-shadow:
+		0 0.1em 0.2em rgba(0, 0, 0, 0.07),
+		0 0.4em 1em rgba(60, 35, 50, 0.18);
+	transform: rotate(7deg);
+	transform-origin: center bottom;
+	width: fit-content;
+	max-width: 14em;
+	opacity: 0;
+	transition: opacity 0.35s ease;
+}
+
+.cake-photo-slot.is-ready .cake-photo-frame
+{
+	opacity: 1;
+}
+
+.cake-photo-frame::before
+{
+	content: '';
+	position: absolute;
+	top: 0.45em;
+	left: 0.45em;
+	right: 0.45em;
+	bottom: 2em;
+	box-shadow: inset 0 0 0.6em rgba(0, 0, 0, 0.05);
+	pointer-events: none;
+}
+
+.cake-photo
+{
+	display: block;
+	width: 11em;
+	height: auto;
+	max-width: 100%;
+	border-radius: 0;
+	filter: contrast(1.04) saturate(0.9) sepia(0.12);
+}
+
+@keyframes flame-sway
+{
+	0%, 100%
+	{
+		transform: rotate(-2deg) scaleX(1) scaleY(1);
+		filter: brightness(1);
+	}
+
+	20%
+	{
+		transform: rotate(2.5deg) scaleX(0.94) scaleY(1.05);
+		filter: brightness(1.06);
+	}
+
+	45%
+	{
+		transform: rotate(-1.5deg) scaleX(1.04) scaleY(0.96);
+		filter: brightness(0.96);
+	}
+
+	70%
+	{
+		transform: rotate(1.8deg) scaleX(0.97) scaleY(1.03);
+		filter: brightness(1.04);
+	}
+}
+
+@keyframes flame-flicker
+{
+	0%, 100%
+	{
+		opacity: 0.85;
+		transform: scaleY(1) translateX(0);
+	}
+
+	30%
+	{
+		opacity: 1;
+		transform: scaleY(1.08) translateX(0.05em);
+	}
+
+	60%
+	{
+		opacity: 0.78;
+		transform: scaleY(0.94) translateX(-0.04em);
+	}
+}
+
+.glow-btn-wrap
+{
+	position: fixed;
+	bottom: calc(1rem + env(safe-area-inset-bottom));
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.7rem;
+	width: max-content;
+	max-width: min(90vw, 20rem);
+	z-index: 10;
+}
+
+.glow-btn-hint
+{
+	margin: 0;
+	font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+	font-size: clamp(0.78rem, 2.4vw, 0.92rem);
+	font-weight: 500;
+	letter-spacing: 0.01em;
+	line-height: 1.35;
+	text-align: center;
+	color: #c45d86;
+	white-space: nowrap;
+}
+
+/* Nút pill giống textBirthday2 */
+.glow-btn
+{
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: max-content;
+	padding: clamp(0.35rem, 1.2vw, 0.55rem) clamp(0.7rem, 2.4vw, 1.1rem);
+	border: 2px solid #f9a8d4;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.72);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	box-shadow:
+		0 0 0 1px rgba(255, 255, 255, 0.65) inset,
+		0 0 16px rgba(244, 114, 182, 0.45),
+		0 0 32px rgba(251, 113, 133, 0.28),
+		0 8px 22px rgba(244, 114, 182, 0.18);
+	cursor: pointer;
+	appearance: none;
+	-webkit-tap-highlight-color: transparent;
+	touch-action: manipulation;
+	animation: glow-btn-pulse 2.4s ease-in-out infinite;
+	transition: transform 0.25s ease;
+}
+
+.glow-btn:hover
+{
+	transform: scale(1.04);
+}
+
+.glow-btn:active,
+.glow-btn.is-holding
+{
+	transform: scale(0.97);
+}
+
+.glow-btn-icon-wrap
+{
+	display: block;
+}
+
+.glow-btn-icon
+{
+	display: block;
+	width: clamp(2.1rem, 7vw, 3rem);
+	height: auto;
+	filter: drop-shadow(0 4px 8px rgba(244, 114, 182, 0.2));
+	pointer-events: none;
+	user-select: none;
+}
+
+@keyframes glow-btn-pulse
+{
+	0%, 100%
+	{
+		border-color: #f9a8d4;
+		box-shadow:
+			0 0 0 1px rgba(255, 255, 255, 0.65) inset,
+			0 0 14px rgba(244, 114, 182, 0.4),
+			0 0 28px rgba(251, 113, 133, 0.22),
+			0 8px 22px rgba(244, 114, 182, 0.16);
+	}
+
+	50%
+	{
+		border-color: #fb7185;
+		box-shadow:
+			0 0 0 1px rgba(255, 255, 255, 0.8) inset,
+			0 0 22px rgba(244, 114, 182, 0.7),
+			0 0 42px rgba(251, 113, 133, 0.42),
+			0 10px 26px rgba(244, 114, 182, 0.24);
+	}
+}
+
+/* Điện thoại */
+@media (max-width: 767px)
+{
+	.scene
+	{
+		padding-bottom: calc(7.5rem + env(safe-area-inset-bottom));
+	}
+
+	.cake
+	{
+		font-size: min(calc((100dvh - 8.5rem) / 44), calc(80vw / 44));
+	}
+
+	.cake-photo
+	{
+		width: 9.5em;
+	}
+
+	.cake-photo-frame
+	{
+		max-width: 11.5em;
+	}
+}
+
+/* Điện thoại nhỏ */
+@media (max-width: 480px)
+{
+	.cake
+	{
+		font-size: min(calc((100dvh - 8.5rem) / 44), calc(76vw / 44));
+	}
+}
+
+/* Điện thoại / tablet nhỏ xoay ngang */
+@media (max-height: 560px) and (orientation: landscape)
+{
+	.scene
+	{
+		align-items: center;
+		justify-content: center;
+		padding:
+			max(0.35rem, env(safe-area-inset-top))
+			max(0.75rem, env(safe-area-inset-right))
+			calc(5.5rem + env(safe-area-inset-bottom))
+			max(0.75rem, env(safe-area-inset-left));
+	}
+
+	.cake
+	{
+		font-size: min(calc((100dvh - 5.5rem) / 44), calc(38vw / 44));
+	}
+
+	.cake-photo
+	{
+		width: 8.5em;
+	}
+
+	.cake-photo-frame
+	{
+		max-width: 10.5em;
+	}
+
+	.glow-btn-wrap
+	{
+		bottom: calc(0.45rem + env(safe-area-inset-bottom));
+		gap: 0.35rem;
+	}
+
+	.glow-btn-hint
+	{
+		font-size: clamp(0.65rem, 2vh, 0.78rem);
+		white-space: normal;
+	}
+}
+
+/* Điện thoại ngang rất thấp */
+@media (max-height: 400px) and (orientation: landscape)
+{
+	.scene
+	{
+		padding-bottom: calc(3.8rem + env(safe-area-inset-bottom));
+	}
+
+	.cake
+	{
+		font-size: min(calc((100dvh - 4.5rem) / 44), calc(34vw / 44));
+	}
+
+	.glow-btn-wrap
+	{
+		bottom: calc(0.3rem + env(safe-area-inset-bottom));
+		gap: 0.25rem;
+	}
+
+	.glow-btn-hint
+	{
+		font-size: 0.62rem;
+		white-space: normal;
+	}
+}
+
+/* iPad & tablet */
+@media (min-width: 768px) and (max-width: 1024px)
+{
+	body,
+	#intro-container,
+	#letter-birthday,
+	#image-birthday,
+	#video-birthday
+	{
+		background-image: url('../assets/imageBackgroud/bg_ipad.png');
+	}
+
+	.scene
+	{
+		padding-bottom: calc(7rem + env(safe-area-inset-bottom));
+	}
+
+	.cake
+	{
+		font-size: min(1.15vmin, calc((100dvh - 8rem) / 44), calc(70vw / 44));
+	}
+}
+
+/* Phone xoay ngang → background laptop */
+@media (max-width: 767px) and (orientation: landscape)
+{
+	body,
+	#intro-container,
+	#letter-birthday,
+	#image-birthday,
+	#video-birthday
+	{
+		background-image: url('../assets/imageBackgroud/bg_laptop.png');
+	}
+}
+
+/* Laptop & desktop lớn */
+@media (min-width: 1025px)
+{
+	body,
+	#intro-container,
+	#letter-birthday,
+	#image-birthday,
+	#video-birthday
+	{
+		background-image: url('../assets/imageBackgroud/bg_laptop.png');
+		background-attachment: fixed;
+	}
+
+	.cake
+	{
+		font-size: min(1.2vmin, calc((100dvh - 9rem) / 44), calc(44vw / 44));
+	}
+}
+
+/*
+ * iPad / tablet xoay ngang (Mini, Air, Pro)
+ * Air & Pro landscape thường > 1024px CSS → dễ bị nhầm laptop;
+ * dùng hover: none để chỉ áp dụng máy cảm ứng, không đè laptop có chuột.
+ */
+@media (min-width: 768px) and (max-width: 1400px) and (orientation: landscape) and (hover: none)
+{
+	body,
+	#intro-container,
+	#letter-birthday,
+	#image-birthday,
+	#video-birthday
+	{
+		background-image: url('../assets/imageBackgroud/bgIpadNgang.png');
+		background-attachment: scroll;
+	}
+}
+
+@media (hover: none)
+{
+	.glow-btn:hover
+	{
+		transform: none;
+	}
+}
+
+@media (prefers-reduced-motion: reduce)
+{
+	.scene
+	{
+		transition: none;
+	}
+
+	.flame,
+	.flame::before,
+	.glow-btn
+	{
+		animation: none !important;
+	}
+}
