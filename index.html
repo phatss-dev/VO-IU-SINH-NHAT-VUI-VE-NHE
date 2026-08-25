@@ -12,40 +12,6 @@
 	<link rel="shortcut icon" href="assets/logos/logoBirthdayVip2.png" type="image/png">
 	<link rel="apple-touch-icon" href="assets/logos/logoBirthdayVip2.png">
 
-	<!-- Open Graph / Link preview (khi copy link sản phẩm) -->
-	<meta property="og:type" content="website">
-	<meta property="og:site_name" content="Happy Birthday VIP">
-	<meta property="og:title" content="Happy Birthday VIP 2">
-	<meta property="og:description" content="Món quà ý nghĩa dành riêng cho người bạn thương.">
-	<meta property="og:image" content="/assets/logos/imageLink.jpg">
-	<meta property="og:image:type" content="image/jpeg">
-	<meta property="og:image:width" content="677">
-	<meta property="og:image:height" content="467">
-	<meta property="og:image:alt" content="Happy Birthday VIP — thiệp sinh nhật online">
-	<meta property="og:locale" content="vi_VN">
-
-	<!-- Twitter Card -->
-	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:title" content="Happy Birthday VIP 2">
-	<meta name="twitter:description" content="Món quà ý nghĩa dành riêng cho người bạn thương.">
-	<meta name="twitter:image" content="/assets/logos/imageLink.jpg">
-
-	<!-- Chặn DevTools (F12, Ctrl+Shift+I, Inspect, …). Bypass: tham số URL ?key=… theo DisableDevtool -->
-	<script src="js/detect-devtools.js"></script>
-	<script>
-		(function () {
-			var keyName = "key";
-			var keyValue = "9ac7ec230e0e4513578f309d6d3579ad";
-			if (typeof DisableDevtool === "function") {
-				DisableDevtool({
-					tkName: keyName,
-					md5: keyValue,
-					interval: 100,
-				});
-			}
-		})();
-	</script>
-
 	<script src="https://cdn.tailwindcss.com"></script>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -89,54 +55,17 @@
 	<link rel="stylesheet" href="css/imageBirthday.css">
 	<link rel="stylesheet" href="css/videoBirthday.css">
 	<link rel="stylesheet" href="css/lucky-rain.css">
-	<style>
-		.demo-watermark {
-			position: fixed;
-			inset: 0;
-			z-index: 10050;
-			pointer-events: none;
-			overflow: hidden;
-			user-select: none;
-			-webkit-user-select: none;
-		}
-		.demo-watermark[hidden] {
-			display: none !important;
-		}
-		.demo-watermark__grid {
-			position: absolute;
-			inset: -20%;
-			display: grid;
-			grid-template-columns: repeat(4, 1fr);
-			gap: 4rem 2rem;
-			transform: rotate(-28deg);
-			opacity: 0.22;
-		}
-		.demo-watermark__grid span {
-			display: block;
-			text-align: center;
-			white-space: nowrap;
-			font-family: "Plus Jakarta Sans", system-ui, sans-serif;
-			font-size: clamp(1.35rem, 3.5vw, 2.1rem);
-			font-weight: 800;
-			letter-spacing: 0.12em;
-			text-transform: uppercase;
-			color: rgba(232, 93, 136, 0.95);
-			text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
-		}
-	</style>
 </head>
 <body class="font-sans antialiased h-full overflow-x-hidden">
-	<div id="demo-watermark" class="demo-watermark" hidden aria-hidden="true">
-		<div class="demo-watermark__grid" id="demo-watermark-grid"></div>
-	</div>
 
+	<!-- MÀN 1: BÁNH KEM VÀ THỔI NẾN -->
 	<div class="scene" id="cake-scene">
 		<div class="cake" data-age="20">
 			<span class="flame flame--left" aria-hidden="true"></span>
 			<span class="flame flame--right" aria-hidden="true"></span>
 			<div class="cake-photo-slot">
 				<div class="cake-photo-frame">
-					<img class="cake-photo" src="assets/images/bg_laptop.png" alt="Ảnh trang trí trên bánh" decoding="async">
+					<img class="cake-photo" src="assets/imageBackgroud/bg_laptop.png" alt="Ảnh trang trí trên bánh" decoding="async">
 				</div>
 			</div>
 		</div>
@@ -150,13 +79,14 @@
 		</div>
 	</div>
 
+	<!-- MÀN 2: CHỮ GÕ MÁY VÀ TÊN PHÁT SÁNG -->
 	<section id="text-birthday" class="text-birthday" aria-hidden="true">
 		<div id="intro-container" class="fixed inset-0 z-10 flex flex-col justify-center items-center overflow-x-hidden overflow-y-visible py-10 md:py-14">
 			<div class="relative z-10 text-center w-full max-w-3xl md:max-w-4xl px-3 sm:px-5 md:px-6 pointer-events-none overflow-visible py-3 sm:py-4">
 				<div id="greet-line" class="flex flex-wrap justify-center gap-x-2 sm:gap-x-3 md:gap-x-5 text-xl sm:text-3xl md:text-5xl lg:text-6xl font-serif text-pink-400/90 tracking-wide mb-3 sm:mb-4 md:mb-8 font-light"></div>
 
 				<div id="name-line" class="relative w-full max-w-full mb-4 sm:mb-6 md:mb-10 opacity-0">
-					<h1 id="recipient-name" class="gradient-recipient-name glowing-text"></h1>
+					<h1 id="recipient-name" class="gradient-recipient-name glowing-text">Nguyễn Thanh Hằng</h1>
 				</div>
 
 				<div id="sub-line" class="min-h-[2.5rem]">
@@ -175,7 +105,8 @@
 		</div>
 	</section>
 
-	<section id="letter-birthday" class="letter-birthday" aria-hidden="true" data-letter-endpoint="">
+	<!-- MÀN 3: BỨC THƯ TÂM TÌNH -->
+	<section id="letter-birthday" class="letter-birthday" aria-hidden="true">
 		<div class="cssletter">
 			<div class="envelope">
 				<button class="heart" id="openEnvelope" aria-label="Mở phong bì">
@@ -184,9 +115,7 @@
 				<div class="envelope-flap"></div>
 				<article class="reveal-letter" aria-live="polite">
 					<h2 class="letter-title" id="letterTitle">Gửi thế giới nhỏ của anh,</h2>
-					<p class="letter-body" id="letterContent">Thêm một tuổi mới là thêm một hành trình mới, và anh thật hạnh phúc khi được đồng hành cùng em trên chặng đường ấy. Cảm ơn em vì đã xuất hiện trong cuộc đời anh, mang đến những nụ cười, sự bình yên và cả những khoảnh khắc mà anh sẽ luôn trân trọng.
-
-Chúc em có một ngày sinh nhật thật ý nghĩa, ngập tràn tiếng cười, những điều bất ngờ và thật nhiều yêu thương.</p>
+					<p class="letter-body" id="letterContent">Thêm một tuổi mới là thêm một hành trình mới, và anh thật hạnh phúc khi được đồng hành cùng em trên chặng đường ấy. Cảm ơn em vì đã xuất hiện trong cuộc đời anh, mang đến những nụ cười, sự bình yên và cả những khoảnh khắc mà anh sẽ luôn trân trọng.<br><br>Chúc em có một ngày sinh nhật thật ý nghĩa, ngập tràn tiếng cười, những điều bất ngờ và thật nhiều yêu thương.</p>
 					<cite class="letter-signature" id="letterSignature">Người luôn thương em.</cite>
 					<button type="button" class="letter-continue" id="continueLetter" disabled aria-hidden="true">
 						Tiếp tục
@@ -201,17 +130,12 @@ Chúc em có một ngày sinh nhật thật ý nghĩa, ngập tràn tiếng cư�
 		</div>
 	</section>
 
+	<!-- MÀN 4: ALBUM KỶ NIỆM -->
 	<section id="image-birthday" class="image-birthday" aria-hidden="true">
 		<div class="container">
 			<header class="page-banner" aria-label="Happy Birthday">
 				<div class="page-banner__frame">
-					<img
-						src="assets/icons/birthdayBunding.png"
-						alt="Happy Birthday"
-						width="1603"
-						height="686"
-						decoding="async"
-					/>
+					<img src="assets/icons/birthdayBunding.png" alt="Happy Birthday" width="1603" height="686" decoding="async" />
 				</div>
 			</header>
 
@@ -228,31 +152,22 @@ Chúc em có một ngày sinh nhật thật ý nghĩa, ngập tràn tiếng cư�
 
 		<div class="lightbox-overlay" id="custom-lightbox">
 			<button class="lightbox-btn lightbox-close" id="lb-close" aria-label="Đóng" type="button">
-				<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-					<line x1="18" y1="6" x2="6" y2="18"></line>
-					<line x1="6" y1="6" x2="18" y2="18"></line>
-				</svg>
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
 			</button>
-
 			<button class="lightbox-btn lightbox-prev" id="lb-prev" aria-label="Trước" type="button">
-				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-					<polyline points="15 18 9 12 15 6"></polyline>
-				</svg>
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
 			</button>
-
 			<div class="lightbox-wrapper">
 				<div class="lightbox-content-box" id="lb-content-target"></div>
 				<div class="lightbox-counter" id="lb-counter">1 / 1</div>
 			</div>
-
 			<button class="lightbox-btn lightbox-next" id="lb-next" aria-label="Tiếp theo" type="button">
-				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-					<polyline points="9 18 15 12 9 6"></polyline>
-				</svg>
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
 			</button>
 		</div>
 	</section>
 
+	<!-- MÀN 5: VIDEO KỶ NIỆM -->
 	<section id="video-birthday" class="video-birthday" aria-hidden="true">
 		<main class="video-birthday__main h-dvh w-full overflow-hidden flex flex-col items-center justify-center gap-2 sm:gap-3 px-3 py-2">
 			<h1 class="shrink-0 text-center font-serif text-xl sm:text-3xl md:text-4xl text-[#be5a7a] font-bold tracking-tight leading-none px-2">
@@ -261,34 +176,24 @@ Chúc em có một ngày sinh nhật thật ý nghĩa, ngập tràn tiếng cư�
 
 			<section id="videoShell" class="video-shell relative shrink min-h-0">
 				<div class="absolute inset-0 bg-[#FF8FB1] opacity-20 blur-[40px] rounded-[20px] pointer-events-none scale-95"></div>
-
 				<div class="gradient-border-wrapper pink-glow relative z-10">
 					<div class="gradient-border-inner group relative" id="fsRoot">
 						<div class="fs-stage relative w-full h-full">
 							<video id="birthdayVideo" class="w-full h-full object-cover" playsinline webkit-playsinline preload="metadata"></video>
-
 							<div id="videoPoster" class="absolute inset-0 z-20 flex flex-col items-center justify-center gap-3 pointer-events-none transition-all duration-500">
 								<div id="stateLoading" class="flex flex-col items-center gap-3">
 									<div class="loader-ring"></div>
 									<p class="text-rosePink text-xs tracking-wide drop-shadow">Đang tải video...</p>
 								</div>
-
 								<div id="stateError" class="hidden flex-col items-center gap-3 px-6 text-center pointer-events-auto">
 									<i class="fa-solid fa-circle-exclamation text-rosePink text-2xl drop-shadow"></i>
 									<p id="errorMessage" class="text-[#4A2533] text-xs sm:text-sm max-w-xs drop-shadow"></p>
-									<button id="retryBtn" type="button" class="mt-1 px-4 py-2 rounded-full bg-white/80 hover:bg-white text-[#4A2533] text-xs tracking-wide transition shadow">
-										Thử lại
-									</button>
+									<button id="retryBtn" type="button" class="mt-1 px-4 py-2 rounded-full bg-white/80 hover:bg-white text-[#4A2533] text-xs tracking-wide transition shadow">Thử lại</button>
 								</div>
-
 								<button id="posterPlayBtn" type="button" class="hidden flex items-center gap-2 pointer-events-auto bg-gradient-to-r from-[#FF8FB1] to-[#FFD6E7] hover:from-[#ff79a1] hover:to-[#f9b7d3] text-white px-5 py-2.5 sm:px-7 sm:py-3 rounded-full font-semibold text-sm tracking-wider shadow-lg transition active:scale-95 hover:scale-105">
-									<span class="w-7 h-7 bg-white/20 rounded-full flex items-center justify-center">
-										<i class="fa-solid fa-play text-[10px] text-white"></i>
-									</span>
-									PHÁT
+									<span class="w-7 h-7 bg-white/20 rounded-full flex items-center justify-center"><i class="fa-solid fa-play text-[10px] text-white"></i></span>PHÁT
 								</button>
 							</div>
-
 							<div id="videoControls" class="absolute bottom-0 left-0 right-0 z-30 p-2.5 sm:p-4 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 focus-within:opacity-100 flex flex-col gap-2 pointer-events-none transition-opacity">
 								<div class="flex items-center gap-2 w-full pointer-events-auto">
 									<span id="currentTime" class="text-[10px] sm:text-xs text-white/80 font-mono">00:00</span>
@@ -298,32 +203,17 @@ Chúc em có một ngày sinh nhật thật ý nghĩa, ngập tràn tiếng cư�
 									</div>
 									<span id="durationTime" class="text-[10px] sm:text-xs text-white/80 font-mono">00:00</span>
 								</div>
-
 								<div class="flex items-center justify-between pointer-events-auto">
 									<div class="flex items-center gap-1 sm:gap-3">
-										<button id="rewindBtn" type="button" class="relative text-white hover:text-rosePink transition active:scale-90 text-sm w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center hover:bg-white/10" title="Lùi 10 giây">
-											<i class="fa-solid fa-rotate-left"></i>
-											<span class="text-[8px] absolute bottom-0.5 right-0.5 font-bold leading-none opacity-90">10</span>
-										</button>
-										<button id="playBtn" type="button" class="text-white hover:text-rosePink transition active:scale-90 text-base w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center hover:bg-white/10" title="Phát / Tạm dừng">
-											<i class="fa-solid fa-play"></i>
-										</button>
-										<button id="forwardBtn" type="button" class="relative text-white hover:text-rosePink transition active:scale-90 text-sm w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center hover:bg-white/10" title="Tới 10 giây">
-											<i class="fa-solid fa-rotate-right"></i>
-											<span class="text-[8px] absolute bottom-0.5 right-0.5 font-bold leading-none opacity-90">10</span>
-										</button>
-
+										<button id="rewindBtn" type="button" class="relative text-white hover:text-rosePink transition active:scale-90 text-sm w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center hover:bg-white/10" title="Lùi 10 giây"><i class="fa-solid fa-rotate-left"></i><span class="text-[8px] absolute bottom-0.5 right-0.5 font-bold leading-none opacity-90">10</span></button>
+										<button id="playBtn" type="button" class="text-white hover:text-rosePink transition active:scale-90 text-base w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center hover:bg-white/10" title="Phát / Tạm dừng"><i class="fa-solid fa-play"></i></button>
+										<button id="forwardBtn" type="button" class="relative text-white hover:text-rosePink transition active:scale-90 text-sm w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center hover:bg-white/10" title="Tới 10 giây"><i class="fa-solid fa-rotate-right"></i><span class="text-[8px] absolute bottom-0.5 right-0.5 font-bold leading-none opacity-90">10</span></button>
 										<div class="flex items-center gap-1 group/volume">
-											<button id="muteBtn" type="button" class="text-white hover:text-rosePink transition text-sm w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center hover:bg-white/10" title="Âm thanh">
-												<i class="fa-solid fa-volume-high"></i>
-											</button>
+											<button id="muteBtn" type="button" class="text-white hover:text-rosePink transition text-sm w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center hover:bg-white/10" title="Âm thanh"><i class="fa-solid fa-volume-high"></i></button>
 											<input type="range" id="volumeBar" min="0" max="1" value="0.8" step="0.05" class="w-0 group-hover/volume:w-16 transition-all duration-300 h-1 bg-white/20 rounded-lg appearance-none cursor-pointer outline-none accent-rosePink">
 										</div>
 									</div>
-
-									<button id="fullscreenBtn" type="button" class="text-white hover:text-rosePink transition active:scale-90 text-sm w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center hover:bg-white/10" title="Toàn màn hình">
-										<i class="fa-solid fa-expand"></i>
-									</button>
+									<button id="fullscreenBtn" type="button" class="text-white hover:text-rosePink transition active:scale-90 text-sm w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center hover:bg-white/10" title="Toàn màn hình"><i class="fa-solid fa-expand"></i></button>
 								</div>
 							</div>
 						</div>
@@ -339,6 +229,7 @@ Chúc em có một ngày sinh nhật thật ý nghĩa, ngập tràn tiếng cư�
 		</button>
 	</section>
 
+	<!-- MÀN 6: BẦU TRỜI SAO VÀ MƯA LỜI CHÚC -->
 	<section id="lucky-rain" class="lucky-rain" aria-hidden="true">
 		<div id="image-text-fly-screen" class="image-text-fly-screen">
 			<canvas id="starfield" aria-hidden="true"></canvas>
@@ -351,6 +242,26 @@ Chúc em có một ngày sinh nhật thật ý nghĩa, ngập tràn tiếng cư�
 		</div>
 	</section>
 
+	<!-- DỮ LIỆU CẤU HÌNH MẪU CHUẨN GỐC -->
+	<script>
+		window.__APP_DATA__ = {
+			recipientName: "Nguyễn Thanh Hằng",
+			age: "20",
+			typewriterText: "HAPPY BIRTHDAY",
+			letterTitle: "Gửi thế giới nhỏ của anh,",
+			letterContent: "Thêm một tuổi mới là thêm một hành trình mới, và anh thật hạnh phúc khi được đồng hành cùng em trên chặng đường ấy. Cảm ơn em vì đã xuất hiện trong cuộc đời anh, mang đến những nụ cười, sự bình yên và cả những khoảnh khắc mà anh sẽ luôn trân trọng.\n\nChúc em có một ngày sinh nhật thật ý nghĩa, ngập tràn tiếng cười, những điều bất ngờ và thật nhiều yêu thương.",
+			letterSignature: "Người luôn thương em.",
+			musicUrl: "./assets/audios/music.mp3",
+			videoUrl: "./assets/videos/memory.mp4",
+			gallery: [
+				"./assets/imageBackgroud/bg_laptop.png",
+				"./assets/imageBackgroud/bg_ipad.png",
+				"./assets/imageBackgroud/bg_phone.png"
+			]
+		};
+	</script>
+
+	<!-- SCRIPTS ĐIỀU KHIỂN -->
 	<script src="api/app-config.js" defer></script>
 	<script src="js/no-zoom.js" defer></script>
 	<script src="js/preview-store.js" defer></script>
