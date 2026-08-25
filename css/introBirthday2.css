@@ -41,18 +41,22 @@ body,
 
 .scene
 {
-	min-height: 100vh;
-	min-height: 100dvh;
-	width: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding:
-		max(1rem, env(safe-area-inset-top))
-		max(0.75rem, env(safe-area-inset-right))
-		calc(8rem + env(safe-area-inset-bottom))
-		max(0.75rem, env(safe-area-inset-left));
-	transition: opacity 0.7s ease, visibility 0.7s ease;
+  background-image: url('../assets/images/bg_laptop.png');
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding:
+    max(1rem, env(safe-area-inset-top))
+    max(0.75rem, env(safe-area-inset-right))
+    calc(8rem + env(safe-area-inset-bottom))
+    max(0.75rem, env(safe-area-inset-left));
+  transition: opacity 0.7s ease, visibility 0.7s ease;
 }
 
 .scene.is-leaving
