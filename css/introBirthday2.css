@@ -661,3 +661,19 @@ body,
 		animation: none !important;
 	}
 }
+
+#cake-scene,
+.scene {
+  background-image: url('../assets/imageBackgroud/bg_laptop.png') !important;
+  background-size: cover !important;
+  background-position: center bottom !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+}
+
+@media (max-width: 768px) {
+  #cake-scene,
+  .scene {
+    background-image: url('../assets/imageBackgroud/bg_phone.png') !important;
+  }
+}
