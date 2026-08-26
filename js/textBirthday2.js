@@ -1,6 +1,6 @@
 const GREETING_TEXT = 'Chúc mừng sinh nhật';
 const SUBTITLE_TEXT = 'Happy Birthday';
-const FALLBACK_RECIPIENT_NAME = 'LỮ LÊ BẢO TRÂN';
+const FALLBACK_RECIPIENT_NAME = 'Lữ Lê Bảo Trân';
 
 const INTRO_CONFIG = {
 	apiUrl: '/api/birthday',
