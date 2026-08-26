@@ -2,7 +2,7 @@ const BIRTHDAY_API = '/api/birthday';
 
 const FALLBACK = {
 	photoUrl: 'assets/images/gai5.jpg',
-	age: '20',
+	age: '17',
 	photoAlt: 'Ảnh trang trí trên bánh',
 	musicUrl: window.BirthdayMusic?.DEFAULT_MUSIC_URL || '',
 };
