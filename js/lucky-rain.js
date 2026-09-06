@@ -1,19 +1,42 @@
 (function () {
   const MAX_MESSAGE_LENGTH = 28;
   const DEFAULT_MESSAGES = [
-    "Chúc em mãi hạnh phúc 💖",
-    "Sinh nhật vui nhé em 🎂",
-    "Yêu em đến mãi sau 💞",
-    "Em là điều tuyệt nhất 💕",
-    "Tuổi mới đầy yêu thương 💓",
+    "Chúc vợ Trân tuổi mới luôn vui vẻ 💖",
+    "Sinh nhật vui nhé vợ iu của anh 🎂",
+    "Yêu công chúa nhỏ đến mãi sau 💞",
+    "Bé là điều tuyệt nhất của anh 💕",
+    "Chúc tuổi mới của bé luôn có ảnh bên cạnh 💓",
+    "Yêu bà xã Bo nhất trên đời 💓",
+    "Hum bík nói seo nma anh thật sự rất yêu bé lun á 🥹",
   ];
   const DEFAULT_IMAGES = [
-    "assets/images/gai_1.jpg",
-    "assets/images/gai_2.jpg",
-    "assets/images/gai_3.jpg",
-    "assets/images/gai4.jpg",
-    "assets/images/gai5.jpg",
-  ];
+  "assets/images/yeu1.jpg",
+  "assets/images/yeu2.jpg",
+  "assets/images/yeu3.jpg",
+  "assets/images/yeu4.jpg",
+  "assets/images/yeu5.jpg",
+  "assets/images/yeu6.jpg",
+  "assets/images/yeu7.jpg",
+  "assets/images/yeu8.jpg",
+  "assets/images/yeu9.jpg",
+  "assets/images/yeu10.jpg",
+  "assets/images/yeu11.jpg",
+  "assets/images/yeu12.jpg",
+  "assets/images/yeu13.jpg",
+  "assets/images/yeu14.jpg",
+  "assets/images/yeu15.jpg",
+  "assets/images/yeu16.jpg",
+  "assets/images/yeu17.jpg",
+  "assets/images/yeu18.jpg",
+  "assets/images/yeu19.jpg",
+  "assets/images/yeu20.jpg",
+  "assets/images/yeu21.jpg",
+  "assets/images/yeu22.jpg",
+  "assets/images/yeu23.jpg",
+  "assets/images/yeu24.jpg",
+  "assets/images/yeu4ph.jpg",
+  "assets/images/yeu5ph.jpg"
+];
   const TABLET_MIN_WIDTH = 768;
   const TABLET_MIN_HEIGHT = 600;
   const DESKTOP_MIN_WIDTH = 1024;
