@@ -303,15 +303,16 @@ body,
 	pointer-events: none;
 }
 
-.cake-photo
-{
-	display: block;
-	width: 11em;
-	height: auto;
-	max-width: 100%;
-	border-radius: 0;
-	filter: contrast(1.04) saturate(0.9) sepia(0.12);
+.cake-photo {
+  display: block;
+  width: 11em;
+  height: 11em;
+  object-fit: cover;
+  max-width: 100%;
+  border-radius: 0;
+  filter: contrast(1.04) saturate(0.9) sepia(0.12);
 }
+
 
 @keyframes flame-sway
 {
