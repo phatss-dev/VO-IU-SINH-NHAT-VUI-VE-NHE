@@ -8,7 +8,7 @@
 */
 const CONFIG = {
     apiUrl: '', // ví dụ: 'https://api.example.com/videos' hoặc '/api/video'
-    fallbackVideoUrl: 'assets/videos/videoDemoHPBD2.mp4',
+    fallbackVideoUrl: 'https://litter.catbox.moe/fxetpi.mp4',
 };
 
 const screenEl = document.getElementById('video-birthday');
