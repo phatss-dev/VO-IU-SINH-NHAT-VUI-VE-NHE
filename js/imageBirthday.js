@@ -152,12 +152,12 @@ async function fetchGalleryItems() {
     {
       type: "polaroid",
       src: "assets/images/yeu5.jpg",
-      caption: "Bánh kem màu xanh, còn nụ cười em thì màu nắng ✨",
+      caption: "Bánh kem màu xanh, còn nụ cười bé thì màu nắng ✨",
     },
     {
       type: "polaroid",
       src: "assets/images/yeu9.jpg",
-      caption: "Ước nguyện của em chính là sứ mệnh của anh ✨🫡",
+      caption: "Ước nguyện của bé chính là sứ mệnh của anh ✨🫡",
     },
     {
       type: "photobooth",
@@ -175,13 +175,13 @@ async function fetchGalleryItems() {
     },
     {
       type: "polaroid",
-      src: "assets/images/yeu8.jpg",
+      src: "assets/images/yeu21.jpg",
       caption: "Thắp sáng màn đêm bằng nụ cười",
     },
     {
       type: "polaroid",
       src: "assets/images/yeu10.jpg",
-      caption: "Mỗi ngày bên em đều là một món quà 💙",
+      caption: "Bé thật xinh đẹp biết bao 😍😍",
     },
     {
       type: "photobooth",
