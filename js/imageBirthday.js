@@ -163,36 +163,36 @@ document.addEventListener("DOMContentLoaded", () => {
       return normalizeGalleryItems([
         {
           type: "polaroid",
-          src: "assets/images/gai_1.jpg",
-          caption: "Nắng sớm và nụ cười rạng rỡ",
+          src: "assets/images/yeu1.jpg",
+          caption: "TRÁI TIM TÌNH YÊU",
         },
         {
           type: "polaroid",
-          src: "assets/images/gai_2.jpg",
-          caption: "Cả bầu trời chứa đầy ước nguyện",
+          src: "assets/images/yeu5.jpg",
+          caption: "Bánh kem màu xanh, còn nụ cười em thì màu nắng",
         },
         {
           type: "polaroid",
-          src: "assets/images/gai_3.jpg",
+          src: "assets/images/yeu9.jpg",
           caption: "Nhắm mắt lại và ước nguyện nào...",
         },
         {
           type: "photobooth",
           images: [
-            "assets/images/gai_1.jpg",
-            "assets/images/gai_2.jpg",
-            "assets/images/gai_3.jpg",
-            "assets/images/gai4.jpg",
+            "assets/images/yeu2.jpg",
+            "assets/images/yeu3.jpg",
+            "assets/images/yeu4.jpg",
+            "assets/images/yeu5.jpg",
           ],
         },
         {
           type: "polaroid",
-          src: "assets/images/gai4.jpg",
-          caption: "Cạn ly vì một tuổi mới hạnh phúc!",
+          src: "assets/images/gai7.jpg",
+          caption: "Ước nguyện của em chính là sứ mệnh của anh ",
         },
         {
           type: "polaroid",
-          src: "assets/images/gai5.jpg",
+          src: "assets/images/yeu21.jpg",
           caption: "Thắp sáng màn đêm bằng nụ cười",
         },
         {
