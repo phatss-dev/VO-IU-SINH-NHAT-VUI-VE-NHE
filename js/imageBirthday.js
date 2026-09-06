@@ -142,80 +142,98 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==========================================
     // LẤY DỮ LIỆU (API hoặc mock local)
     // ==========================================
-    async function fetchGalleryItems() {
-      const preview =
-        (window.__birthdayPreviewReady && (await window.__birthdayPreviewReady)) ||
-        window.__BIRTHDAY_PREVIEW__;
+async function fetchGalleryItems() {
+  return normalizeGalleryItems([
+    {
+      type: "polaroid",
+      src: "assets/images/yeu1.jpg",
+      caption: "TRÁI TIM TÌNH YÊU",
+    },
+    {
+      type: "polaroid",
+      src: "assets/images/yeu5.jpg",
+      caption: "Bánh kem màu xanh, còn nụ cười em thì màu nắng ✨",
+    },
+    {
+      type: "polaroid",
+      src: "assets/images/yeu9.jpg",
+      caption: "Ước nguyện của em chính là sứ mệnh của anh ✨🫡",
+    },
+    {
+      type: "photobooth",
+      images: [
+        "assets/images/yeu2.jpg",
+        "assets/images/yeu3.jpg",
+        "assets/images/yeu4.jpg",
+        "assets/images/yeu6.jpg",
+      ],
+    },
+    {
+      type: "polaroid",
+      src: "assets/images/yeu7.jpg",
+      caption: "Cạn ly vì một tuổi mới hạnh phúc!",
+    },
+    {
+      type: "polaroid",
+      src: "assets/images/yeu8.jpg",
+      caption: "Thắp sáng màn đêm bằng nụ cười",
+    },
+    {
+      type: "polaroid",
+      src: "assets/images/yeu10.jpg",
+      caption: "Mỗi ngày bên em đều là một món quà 💙",
+    },
+    {
+      type: "photobooth",
+      images: [
+        "assets/images/yeu11.jpg",
+        "assets/images/yeu12.jpg",
+        "assets/images/yeu13.jpg",
+        "assets/images/yeu14.jpg",
+      ],
+    },
+    {
+      type: "polaroid",
+      src: "assets/images/yeu15.jpg",
+      caption: "Khoảnh khắc ngọt ngào tuổi 17",
+    },
+    {
+      type: "polaroid",
+      src: "assets/images/yeu16.jpg",
+      caption: "Luôn xinh đẹp và rạng rỡ nhé, Bảo Trân ✨",
+    },
+    {
+      type: "photobooth",
+      images: [
+        "assets/images/yeu17.jpg",
+        "assets/images/yeu18.jpg",
+        "assets/images/yeu19.jpg",
+        "assets/images/yeu20.jpg",
+      ],
+    },
+    {
+      type: "polaroid",
+      src: "assets/images/yeu21.jpg",
+      caption: "Tuổi mới ngập tràn niềm vui và bình yên 🌸",
+    },
+    {
+      type: "polaroid",
+      src: "assets/images/yeu22.jpg",
+      caption: "Mãi yêu em 🤍",
+    },
+    {
+      type: "polaroid",
+      src: "assets/images/yeu23.jpg",
+      caption: "Cùng nhau đi qua thêm nhiều sinh nhật nữa nhé",
+    },
+    {
+      type: "polaroid",
+      src: "assets/images/yeu24.jpg",
+      caption: "Hẹn gặp lại tuổi mới rực rỡ hơn!",
+    },
+  ]);
+}
 
-      if (preview?.galleryItems?.length) {
-        return normalizeGalleryItems(preview.galleryItems);
-      }
-
-      if (GALLERY_API_URL) {
-        const res = await fetch(GALLERY_API_URL);
-        if (!res.ok) {
-          throw new Error(`API lỗi: ${res.status}`);
-        }
-        return normalizeGalleryItems(await res.json());
-      }
-  
-      // Mock — thay bằng API khi sẵn sàng
-      return normalizeGalleryItems([
-        {
-          type: "polaroid",
-          src: "assets/images/yeu1.jpg",
-          caption: "TRÁI TIM TÌNH YÊU",
-        },
-        {
-          type: "polaroid",
-          src: "assets/images/yeu5.jpg",
-          caption: "Bánh kem màu xanh, còn nụ cười em thì màu nắng",
-        },
-        {
-          type: "polaroid",
-          src: "assets/images/yeu9.jpg",
-          caption: "Nhắm mắt lại và ước nguyện nào...",
-        },
-        {
-          type: "photobooth",
-          images: [
-            "assets/images/yeu2.jpg",
-            "assets/images/yeu3.jpg",
-            "assets/images/yeu4.jpg",
-            "assets/images/yeu5.jpg",
-          ],
-        },
-        {
-          type: "polaroid",
-          src: "assets/images/gai7.jpg",
-          caption: "Ước nguyện của em chính là sứ mệnh của anh ",
-        },
-        {
-          type: "polaroid",
-          src: "assets/images/yeu21.jpg",
-          caption: "Thắp sáng màn đêm bằng nụ cười",
-        },
-        {
-          type: "polaroid",
-          src: "assets/images/gai_2.jpg",
-          caption: "Nhảy múa quên đi ngày hôm qua",
-        },
-        {
-          type: "photobooth",
-          images: [
-            "assets/images/gai5.jpg",
-            "assets/images/gai4.jpg",
-            "assets/images/gai_3.jpg",
-            "assets/images/gai_1.jpg",
-          ],
-        },
-        {
-          type: "polaroid",
-          src: "assets/images/gai_3.jpg",
-          caption: "Hẹn gặp lại tuổi mới rực rỡ hơn!",
-        },
-      ]);
-    }
   
     // ==========================================
     // RENDER THEO TỪNG LOẠI KHUNG
