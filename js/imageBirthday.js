@@ -171,7 +171,7 @@ async function fetchGalleryItems() {
     {
       type: "polaroid",
       src: "assets/images/yeu7.jpg",
-      caption: "Cạn ly vì một tuổi mới hạnh phúc!",
+      caption: "Beucs nào cũngaf người xinh đẹp nhất trong lòng anh nên mong bé đừng tự ti về bản thân nhée 🥺🥹",
     },
     {
       type: "polaroid",
@@ -200,7 +200,7 @@ async function fetchGalleryItems() {
     {
       type: "polaroid",
       src: "assets/images/yeu16.jpg",
-      caption: "Luôn xinh đẹp và rạng rỡ nhé, Bảo Trân ✨",
+      caption: "Luôn xinh đẹp và rạng rỡ nhé, vợ Bảo Trân ✨",
     },
     {
       type: "photobooth",
@@ -219,7 +219,7 @@ async function fetchGalleryItems() {
     {
       type: "polaroid",
       src: "assets/images/yeu22.jpg",
-      caption: "Mãi yêu em 🤍",
+      caption: "Mãi yêu vợ Trân 🤍",
     },
     {
       type: "polaroid",
