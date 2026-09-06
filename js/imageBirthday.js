@@ -160,6 +160,11 @@ async function fetchGalleryItems() {
       caption: "Ước nguyện của bé chính là sứ mệnh của anh ✨🫡",
     },
     {
+      type: "polaroid",
+      src: "assets/images/yeu4ph.jpg",
+      caption: "Nụ cười của bé lúc nào cũng làm anh say đắm, vì thế hãy cười nhiều lên nhoo bé iu của anh 😘",
+    },
+    {
       type: "photobooth",
       images: [
         "assets/images/yeu2.jpg",
@@ -201,6 +206,11 @@ async function fetchGalleryItems() {
       type: "polaroid",
       src: "assets/images/yeu16.jpg",
       caption: "Luôn xinh đẹp và rạng rỡ nhé, vợ Bảo Trân ✨",
+    },
+    {
+      type: "polaroid",
+      src: "assets/images/yeu5ph.jpg",
+      caption: "Nàng lúc nào cũng biết cách để quyến rủ anh 😍😍",
     },
     {
       type: "photobooth",
